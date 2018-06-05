@@ -4,9 +4,6 @@
 // HW 03_1
 // 6/4/2018
 //
-
-
-
 #include "readint.h"
 #include <stdexcept>
 #include<iostream>
@@ -18,6 +15,9 @@ int read_int(const std::string &prompt, int low, int high)
 
 	cin.exceptions(ios_base::failbit | ios::badbit);
 	int num = 0;
+	if (low >= high) {
+		throw(invalid_argument("INVAILD ARGUMENT: NOT A VAILD RANGE"));
+	}
 	while (true)
 	{
 		// gets user input 
@@ -28,7 +28,7 @@ int read_int(const std::string &prompt, int low, int high)
 			// throws and cathces if out of range 
 			if (num < low || num > high)
 			{
-				throw range_error("Number is out of Range");
+				throw( range_error("Number is out of Range"));
 			}
 			else
 				return num;
